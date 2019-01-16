@@ -1,4 +1,4 @@
-package com.LoggitorFix.LoggitorFix.entity;
+package com.LoggitorFix.LoggitorFix.domain;
 
 import java.util.List;
 
@@ -9,36 +9,36 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
 @Entity
-public class Defect_Severity {
-
+public class Event_Severity {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	long id;
 	String severity;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="defect_sev")
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="event_sev")
     private List<Event> events;
 	
-	// empty constructor
-	public Defect_Severity() {}
-	
-	public Defect_Severity(String severity) {
+	//empty constructor
+	public Event_Severity() {}
+
+	public Event_Severity(String severity) {
 		super();
 		this.severity = severity;
 	}
 
 	
 	
-	public Defect_Severity(String severity, List<Event> events) {
+	
+	public Event_Severity(String severity, List<Event> events) {
 		super();
 		this.severity = severity;
 		this.events = events;
 	}
 
-	//setters and getters
+	//getters and setters
 	public long getId() {
 		return id;
 	}
@@ -62,6 +62,7 @@ public class Defect_Severity {
 	public void setEvents(List<Event> events) {
 		this.events = events;
 	}
+	
 	
 	
 	

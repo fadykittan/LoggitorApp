@@ -1,4 +1,4 @@
-package com.LoggitorFix.LoggitorFix.entity;
+package com.LoggitorFix.LoggitorFix.domain;
 
 import java.util.List;
 
@@ -10,39 +10,39 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class App {
+public class Action {
 
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	long id;
 	String name;
-	String type;
+	String action;
 	
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="app")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="action")
     private List<Event> events;
 	
-	//empty constructor
-	public App() {}
-
-	public App(String name, String type) {
+	
+	// empty constructor
+	public Action() {}
+	
+	public Action(String name, String action) {
 		super();
 		this.name = name;
-		this.type = type;
+		this.action = action;
 	}
 
 	
 	
 	
-	public App(String name, String type, List<Event> events) {
+	public Action(String name, String action, List<Event> events) {
 		super();
 		this.name = name;
-		this.type = type;
+		this.action = action;
 		this.events = events;
 	}
 
-	//getters and setters
+	//setters and getters
 	public long getId() {
 		return id;
 	}
@@ -59,12 +59,12 @@ public class App {
 		this.name = name;
 	}
 
-	public String getType() {
-		return type;
+	public String getAction() {
+		return action;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setAction(String action) {
+		this.action = action;
 	}
 
 	public List<Event> getEvents() {
@@ -74,6 +74,10 @@ public class App {
 	public void setEvents(List<Event> events) {
 		this.events = events;
 	}
+	
+	
+	
+	
 	
 	
 	

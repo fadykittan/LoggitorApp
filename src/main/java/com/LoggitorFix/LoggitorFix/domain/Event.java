@@ -1,4 +1,4 @@
-package com.LoggitorFix.LoggitorFix.entity;
+package com.LoggitorFix.LoggitorFix.domain;
 
 import java.util.List;
 
