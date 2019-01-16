@@ -1,4 +1,4 @@
-package com.LoggitorFix.LoggitorFix.domain;
+package com.LoggitorApp.LoggitorApp.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

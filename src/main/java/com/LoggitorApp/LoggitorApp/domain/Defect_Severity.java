@@ -1,4 +1,4 @@
-package com.LoggitorFix.LoggitorFix.domain;
+package com.LoggitorApp.LoggitorApp.domain;
 
 import java.util.List;
 
@@ -9,36 +9,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+
 @Entity
-public class Action {
+public class Defect_Severity {
+
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	long id;
-	String name;
-	String action;
+	String severity;
 	
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="action")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="defect_sev")
     private List<Event> events;
 	
-	
 	// empty constructor
-	public Action() {}
+	public Defect_Severity() {}
 	
-	public Action(String name, String action) {
+	public Defect_Severity(String severity) {
 		super();
-		this.name = name;
-		this.action = action;
+		this.severity = severity;
 	}
 
 	
 	
-	
-	public Action(String name, String action, List<Event> events) {
+	public Defect_Severity(String severity, List<Event> events) {
 		super();
-		this.name = name;
-		this.action = action;
+		this.severity = severity;
 		this.events = events;
 	}
 
@@ -51,20 +47,12 @@ public class Action {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getSeverity() {
+		return severity;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getAction() {
-		return action;
-	}
-
-	public void setAction(String action) {
-		this.action = action;
+	public void setSeverity(String severity) {
+		this.severity = severity;
 	}
 
 	public List<Event> getEvents() {
@@ -74,10 +62,6 @@ public class Action {
 	public void setEvents(List<Event> events) {
 		this.events = events;
 	}
-	
-	
-	
-	
 	
 	
 	
