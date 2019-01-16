@@ -1,5 +1,6 @@
 package com.LoggitorApp.LoggitorApp.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -38,17 +39,20 @@ public class Event {
 	String comperator;
 	String name;
 	int percent;
+	String desc;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="event")
-    private List<Event_Instance> event_instances;
+    private List<Event_Instance> event_instances = new ArrayList<Event_Instance>();
 	
 	
 	//empty constructor
 	public Event() {}
 
 
+	
+
 	public Event(App app, Defect_Severity defect_sev, Action action, Event_Severity event_sev, String comperator,
-			String name, int percent) {
+			String name, int percent, String desc, List<Event_Instance> event_instances) {
 		super();
 		this.app = app;
 		this.defect_sev = defect_sev;
@@ -57,21 +61,11 @@ public class Event {
 		this.comperator = comperator;
 		this.name = name;
 		this.percent = percent;
-	}
-
-
-	public Event(App app, Defect_Severity defect_sev, Action action, Event_Severity event_sev, String comperator,
-			String name, int percent, List<Event_Instance> event_instances) {
-		super();
-		this.app = app;
-		this.defect_sev = defect_sev;
-		this.action = action;
-		this.event_sev = event_sev;
-		this.comperator = comperator;
-		this.name = name;
-		this.percent = percent;
+		this.desc = desc;
 		this.event_instances = event_instances;
 	}
+
+
 
 
 	//getters and setters
@@ -163,6 +157,21 @@ public class Event {
 	public void setEvent_instances(List<Event_Instance> event_instances) {
 		this.event_instances = event_instances;
 	}
+
+
+
+
+	public String getDesc() {
+		return desc;
+	}
+
+
+
+
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+	
 	
 	
 	

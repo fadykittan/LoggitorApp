@@ -1,5 +1,6 @@
 package com.LoggitorApp.LoggitorApp.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -20,7 +21,7 @@ public class Action {
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="action")
-    private List<Event> events;
+    private List<Event> events = new ArrayList<Event>();
 	
 	
 	// empty constructor
