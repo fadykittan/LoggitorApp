@@ -1,5 +1,6 @@
 package com.LoggitorApp.LoggitorApp.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -19,7 +20,7 @@ public class Event_Severity {
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="event_sev")
-    private List<Event> events;
+    private List<Event> events = new ArrayList<Event>();
 	
 	//empty constructor
 	public Event_Severity() {}
@@ -64,7 +65,9 @@ public class Event_Severity {
 	}
 	
 	
-	
+	public void setEvents(Event event) {
+		this.events.add(event);
+	}
 	
 	
 	

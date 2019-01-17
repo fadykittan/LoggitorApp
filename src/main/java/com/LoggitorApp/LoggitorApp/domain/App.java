@@ -1,5 +1,6 @@
 package com.LoggitorApp.LoggitorApp.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -21,7 +22,7 @@ public class App {
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="app")
-    private List<Event> events;
+    private List<Event> events = new ArrayList<Event>();
 	
 	//empty constructor
 	public App() {}
@@ -40,6 +41,13 @@ public class App {
 		this.name = name;
 		this.type = type;
 		this.events = events;
+	}
+	
+	public App(String name, String type, Event event) {
+		super();
+		this.name = name;
+		this.type = type;
+		this.events.add(event);
 	}
 
 	//getters and setters
@@ -76,7 +84,9 @@ public class App {
 	}
 	
 	
-	
+	public void setEvents(Event event) {
+		this.events.add(event);
+	}
 	
 	
 }

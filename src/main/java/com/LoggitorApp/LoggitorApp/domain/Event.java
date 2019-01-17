@@ -66,6 +66,23 @@ public class Event {
 	}
 
 
+	
+
+
+	public Event(App app, Defect_Severity defect_sev, Action action, Event_Severity event_sev, String comperator,
+			String name, int percent, String desc) {
+		super();
+		this.app = app;
+		this.defect_sev = defect_sev;
+		this.action = action;
+		this.event_sev = event_sev;
+		this.comperator = comperator;
+		this.name = name;
+		this.percent = percent;
+		this.desc = desc;
+	}
+
+
 
 
 	//getters and setters
@@ -159,6 +176,9 @@ public class Event {
 	}
 
 
+	public void setEvent_instances(Event_Instance event_instances) {
+		this.event_instances.add(event_instances);
+	}
 
 
 	public String getDesc() {

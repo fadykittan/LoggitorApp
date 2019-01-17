@@ -1,5 +1,6 @@
 package com.LoggitorApp.LoggitorApp.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -20,7 +21,7 @@ public class Defect_Severity {
 	String severity;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="defect_sev")
-    private List<Event> events;
+    private List<Event> events = new ArrayList<Event>();
 	
 	// empty constructor
 	public Defect_Severity() {}
@@ -63,7 +64,9 @@ public class Defect_Severity {
 		this.events = events;
 	}
 	
-	
+	public void setEvents(Event event) {
+		this.events.add(event);
+	}
 	
 	
 	

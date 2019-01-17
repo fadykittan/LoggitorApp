@@ -15,6 +15,7 @@ import com.LoggitorApp.LoggitorApp.domain.App_Repo;
 import com.LoggitorApp.LoggitorApp.domain.Defect_Severity;
 import com.LoggitorApp.LoggitorApp.domain.Defect_Severity_Repo;
 import com.LoggitorApp.LoggitorApp.domain.Event;
+import com.LoggitorApp.LoggitorApp.domain.Event_Instance;
 import com.LoggitorApp.LoggitorApp.domain.Event_Instance_Repo;
 import com.LoggitorApp.LoggitorApp.domain.Event_Repo;
 import com.LoggitorApp.LoggitorApp.domain.Event_Severity;
@@ -67,7 +68,27 @@ public class LoggitorAppApplication {
     	  Action ac1 = new Action("SMS","SMS");
     	  Action ac2 = new Action("email","email");
     	  
-    	  Event ev1 = new Event();
+    	  Event ev1 = new Event(a1,d1,ac1,e1,"bigger","WTF", 50, ":/");
+    	  Event ev2 = new Event(a2,d2,ac2,e2,"bigger","WTF", 50, ":/");
+    	  
+    	  Event_Instance ei1 = new Event_Instance("1",ev1);
+    	  Event_Instance ei2 = new Event_Instance("2",ev2);
+    	  
+    	  
+    	  a1.setEvents(ev1);
+    	  a2.setEvents(ev2);
+    	  
+    	  e1.setEvents(ev1);
+    	  e2.setEvents(ev2);
+    	  
+    	  d1.setEvents(ev1);
+    	  d2.setEvents(ev2);
+    	  
+    	  ac1.setEvents(ev1);
+    	  ac2.setEvents(ev2);
+    	  
+    	  ev1.setEvent_instances(ei1);
+    	  ev2.setEvent_instances(ei2);
     	  
     	  
     	  app.save(a1);
@@ -75,6 +96,18 @@ public class LoggitorAppApplication {
     	  
     	  evSev.save(e1);
     	  evSev.save(e2);
+    	  
+    	  defSev.save(d1);
+    	  defSev.save(d2);
+    	  
+    	  act.save(ac1);
+    	  act.save(ac2);
+    	  
+    	  eve.save(ev1);
+    	  eve.save(ev2);
+    	  
+    	  eveIns.save(ei1);
+    	  eveIns.save(ei2);
     	  
     	  
       };

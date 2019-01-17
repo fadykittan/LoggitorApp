@@ -77,7 +77,9 @@ public class Action {
 	}
 	
 	
-	
+	public void setEvents(Event event) {
+		this.events.add(event);
+	}
 	
 	
 	
