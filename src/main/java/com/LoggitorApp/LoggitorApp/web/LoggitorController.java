@@ -27,17 +27,18 @@ public class LoggitorController {
 		return eventRepo.findAll();
 	}
 	
-	/*
+	
 	@RequestMapping("/getActionLogTable/{date}")
 	public ArrayList<ActionLog> getActionLogTable(@PathVariable String date) {
 	    return eventInsRepo.getActionLogTable(date);
 	    }
-	*/
 	
+	/*
 	@RequestMapping("/getActionLogTable")
 	public ArrayList<ActionLog> getActionLogTable() {
 	    return eventInsRepo.getActionLogTable();
 	    }
+	    */
 
 	
 	
