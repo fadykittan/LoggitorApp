@@ -20,6 +20,7 @@ public class Action {
 	String action;
 	
 	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="action")
     private List<Event> events = new ArrayList<Event>();
 	

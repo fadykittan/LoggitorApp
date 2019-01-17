@@ -91,6 +91,12 @@ public class LoggitorAppApplication {
     	  ev2.setEvent_instances(ei2);
     	  
     	  
+    	  eve.save(ev1);
+    	  eve.save(ev2);
+    	  
+    	  act.save(ac1);
+    	  act.save(ac2);
+    	  
     	  app.save(a1);
     	  app.save(a2);
     	  
@@ -100,11 +106,11 @@ public class LoggitorAppApplication {
     	  defSev.save(d1);
     	  defSev.save(d2);
     	  
-    	  act.save(ac1);
-    	  act.save(ac2);
     	  
-    	  eve.save(ev1);
-    	  eve.save(ev2);
+    	  
+    	  
+    	  
+    	  
     	  
     	  eveIns.save(ei1);
     	  eveIns.save(ei2);
