@@ -14,6 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.SqlResultSetMapping;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @SqlResultSetMapping(
 		name="ActionLogMapping",
@@ -21,22 +24,23 @@ import javax.persistence.SqlResultSetMapping;
 	        @ConstructorResult(
 	        		targetClass=ActionLog.class,
 	            columns={
-	                @ColumnResult(name="ID", type = BigInteger.class),
+		            @ColumnResult(name="ID", type = BigInteger.class),
 	                @ColumnResult(name="NAME", type = String.class),
 	                @ColumnResult(name="SEVERITY", type = String.class),
 	                @ColumnResult(name="DESC", type = String.class),
-	                @ColumnResult(name="ACTION", type = String.class)
+	                @ColumnResult(name="ACTION_NAME", type = String.class)
 	            }
 	        )
 	    }
 	)
 
-@NamedNativeQuery(name="Event_Instance.getActionLogTable", query="SELECT OWNER.FIRSTNAME, TRIP.NAME, TRIP.TRIP_ID "
-		+ "FROM TRIP INNER JOIN "
-		+ "((OWNER INNER JOIN CAR ON OWNER.OWNERID = CAR.OWNER) "
-		+ "INNER JOIN CAR_IN_TRIP ON CAR.ID = CAR_IN_TRIP.CAR_ID) "
-		+ "ON TRIP.TRIP_ID = CAR_IN_TRIP.TRIP_ID "
-		+ "WHERE (((TRIP.TRIP_ID)= :tripId))", resultSetMapping="ActionLogMapping")
+@NamedNativeQuery(name="Event_Instance.getActionLogTable", query="SELECT "
+		+ "EVENT_INSTANCE.ID, EVENT.NAME, DEFECT_SEVERITY.SEVERITY, EVENT.DESC, ACTION.ACTION_NAME \r\n" + 
+		"FROM EVENT_INSTANCE , EVENT , DEFECT_SEVERITY , ACTION \r\n" + 
+		"WHERE EVENT_INSTANCE.DATE = '1'\r\n" + 
+		"AND EVENT_INSTANCE.EVENT = EVENT.ID \r\n" + 
+		"AND EVENT.DEFECT_SEV =DEFECT_SEVERITY.ID \r\n" + 
+		"AND EVENT.ACTION = ACTION.ID", resultSetMapping="ActionLogMapping")
 public class Event_Instance {
 
 	@Id
@@ -46,6 +50,8 @@ public class Event_Instance {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "event")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@JsonIgnore
 	Event event;
 	
 	//empty constructor

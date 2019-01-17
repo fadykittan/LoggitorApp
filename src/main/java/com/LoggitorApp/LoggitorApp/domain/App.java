@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class App {
 
@@ -22,6 +25,8 @@ public class App {
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="app")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@JsonIgnore
     private List<Event> events = new ArrayList<Event>();
 	
 	//empty constructor

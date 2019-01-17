@@ -28,6 +28,23 @@ public class ActionLog {
 	}
 
 	
+	
+	public ActionLog(String name, String severity, String desc, String action) {
+		super();
+		this.name = name;
+		this.severity = severity;
+		this.desc = desc;
+		this.action = action;
+	}
+	
+	public ActionLog(String name, String severity, String desc) {
+		super();
+		this.name = name;
+		this.severity = severity;
+		this.desc = desc;
+	}
+
+
 	// getters and setters
 
 	public BigInteger getId() {

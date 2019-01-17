@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Event_Severity {
 
@@ -20,6 +23,8 @@ public class Event_Severity {
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="event_sev")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@JsonIgnore
     private List<Event> events = new ArrayList<Event>();
 	
 	//empty constructor
